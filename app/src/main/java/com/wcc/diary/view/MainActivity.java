@@ -1,15 +1,22 @@
-package com.wcc.diary;
+package com.wcc.diary.view;
 
+import android.app.Person;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
-
+import com.wcc.diary.R;
+import com.wcc.diary.viewmodel.PersonViewModel;
+import androidx.fragment.app.Fragment;
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    PersonViewModel mPerson;
+    Fragment calendarView;
+    Fragment textView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    loadFragment(calendarView);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    loadFragment(textView);
+
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+
                     return true;
             }
             return false;
@@ -34,11 +42,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+      //MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+       // UserBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+        setContentView(R.layout.activity_main);
+        mPerson = ViewModelProviders.of(this).get(PersonViewModel.class);
+        mPerson.setFirstname("first viewmodel");
+        textView = new TextFragment();
+        calendarView = new CalendarFragment();
+        loadFragment(calendarView);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 
 }
