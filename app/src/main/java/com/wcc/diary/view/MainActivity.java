@@ -1,7 +1,9 @@
 package com.wcc.diary.view;
 
 import android.app.Person;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -54,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         textView = new TextFragment();
         calendarView = new CalendarFragment();
-        loadFragment(calendarView);
-
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        DBTest();
+//        loadFragment(calendarView);
+//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private boolean loadFragment(Fragment fragment) {
@@ -73,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private  void DBTest(){
-      //  DiaryItem item = new DiaryItem('2019-12-29","test project","imgulr test");
-       // DiaryDBImp.getInstance().getDiaryDAO().insert();
+        DiaryItem item = new DiaryItem("2019-12-29","test project","imgulr test");
+        DiaryDBImp.getInstance(this).getDiaryDAO().insert(item);
+        DiaryItem it2 = DiaryDBImp.getInstance(this).getDiaryDAO().getDiaryItem("2019-12-29");
+        Log.i("MainActivity", it2.getDesc());
     }
 
 }
