@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.wcc.diary.R;
+import com.wcc.diary.repository.DiaryDBImp;
+import com.wcc.diary.repository.entity.DiaryItem;
 import com.wcc.diary.viewmodel.PersonViewModel;
 import androidx.fragment.app.Fragment;
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mPerson = ViewModelProviders.of(this).get(PersonViewModel.class);
         mPerson.setFirstname("first viewmodel");
+
+
         textView = new TextFragment();
         calendarView = new CalendarFragment();
         loadFragment(calendarView);
@@ -66,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private  void DBTest(){
+      //  DiaryItem item = new DiaryItem('2019-12-29","test project","imgulr test");
+       // DiaryDBImp.getInstance().getDiaryDAO().insert();
     }
 
 }
