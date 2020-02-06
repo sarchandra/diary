@@ -1,33 +1,55 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-allprojects {
-    repositories {
-        jcenter()
-        google()
-    }
-}
 buildscript {
     repositories {
-        google()
         jcenter()
-        
+        google()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
-        
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
 allprojects {
     repositories {
-        google()
         jcenter()
-        
+        google()
+        maven { url "https://jitpack.io" }
+    }
+
+    // tasks.withType(JavaCompile) {
+    //     options.deprecation = true
+    // }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '29.0.2'
+
+    defaultConfig {
+        applicationId "org.dharshini.diary"
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionName "1.62"
+        versionCode 162
+
+        buildConfigField "long", "BUILT", System.currentTimeMillis() + "L"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        disable 'IconDensities', 'ContentDescription', 'SetJavaScriptEnabled',
+            'IconDuplicates', 'UnusedAttribute'
+        // abortOnError false
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+dependencies {
+    implementation 'com.github.billthefarmer:CustomCalendarView:v1.05'
+    implementation 'com.github.billthefarmer:MarkdownView:v1.04'
 }
