@@ -1,3 +1,8 @@
+Auther : Dharshini Y
+Date : Feb 8, 2020
+---
+
+
 # ![Logo](src/main/res/drawable-hdpi/ic_launcher.png) Digital Diary 
 
 
