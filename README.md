@@ -1,4 +1,4 @@
-# ![Logo](src/main/res/drawable-hdpi/ic_launcher.png) Diary [![Build Status](https://travis-ci.org/billthefarmer/diary.svg?branch=master)](https://travis-ci.org/billthefarmer/diary) [![Release](https://img.shields.io/github/release/billthefarmer/diary.svg?logo=github)](https://github.com/billthefarmer/diary/releases) [![Available on F-Droid](https://f-droid.org/wiki/images/c/ca/F-Droid-button_available-on_smaller.png)](https://f-droid.org/packages/org.billthefarmer.diary)
+# ![Logo](src/main/res/drawable-hdpi/ic_launcher.png) Digital Diary 
 
 
 Diary is an innovative app where you could put your personal notes or
@@ -13,10 +13,7 @@ It will help you keep it ordered by date like a traditional journal or
  personal diary.  You can make predictions about what will happen and
  see if they come true, and you can see how you changed over time, and
  read over memories, having a few laughs.  It's the funniest, quickest
- and easiest way to document your life through a series of notes.  The
- app is available on
- [F-Droid](https://f-droid.org/packages/org.billthefarmer.diary) and
- [here](https://github.com/billthefarmer/diary/releases).
+ and easiest way to document your life through a series of notes. 
 
 ![Diary](https://github.com/billthefarmer/billthefarmer.github.io/raw/master/images/diary/Diary-phone.png) ![Calendar](https://github.com/billthefarmer/billthefarmer.github.io/raw/master/images/diary/Calendar-phone.png)
 
@@ -25,16 +22,6 @@ It will help you keep it ordered by date like a traditional journal or
 ![Web browser](https://github.com/billthefarmer/billthefarmer.github.io/raw/master/images/diary/Web.png)
 
 ![Markdown](https://github.com/billthefarmer/billthefarmer.github.io/raw/master/images/diary/Media-markdown.png) ![Media](https://github.com/billthefarmer/billthefarmer.github.io/raw/master/images/diary/Media-phone.png)
-
-There is a
-[help](https://github.com/billthefarmer/diary/blob/master/data/help.md),
-a
-[test](https://github.com/billthefarmer/diary/blob/master/data/test.md),
-an example
-[styles](https://github.com/billthefarmer/diary/blob/master/data/styles.md)
-file and an example
-[script](https://github.com/billthefarmer/diary/blob/master/data/script.md)
-file, which may be copied in to an entry for reference if required.
 
 ### Playing video
 Recent versions of Android may not play videos in diary entries added
@@ -150,17 +137,6 @@ to file URIs (`file:///`) if possible. Media will be added using
 markdown image syntax (`![<name>](<url>)`), which will be parsed into
 an HTML5 media player, text clips will be added as above, URLs will be
 added as a link.
-
-## LaTeX
-Diary doesn't support [LaTeX](https://en.wikipedia.org/wiki/LaTeX),
-but it is possible to use an external site to add LaTeX formatted
-images.
-
-    ![Math](http://www.sciweavers.org/tex2img.php?eq=\sum_{i=1}^{n}x_{i}^{2}&bc=cornsilk&fc=black&im=jpg&fs=24&ff=arev)
-
-    \sum_{i=1}^{n}x_{i}^{2}
-
-![Math](http://www.sciweavers.org/tex2img.php?eq=\sum_{i=1}^{n}x_{i}^{2}&bc=cornsilk&fc=black&im=jpg&fs=24&ff=arev)
 
 ## Links
 You may put links in diary pages, so
