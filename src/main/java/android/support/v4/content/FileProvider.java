@@ -34,6 +34,7 @@ import android.os.ParcelFileDescriptor;
 import android.provider.OpenableColumns;
 // import android.support.annotation.GuardedBy;
 import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -564,7 +565,10 @@ public class FileProvider extends ContentProvider {
                 } catch (XmlPullParserException e) {
                     throw new IllegalArgumentException(
                             "Failed to parse " + META_DATA_FILE_PROVIDER_PATHS + " meta-data", e);
+                } catch (Exception e){
+                    Log.d("FileProvider", "getPathStrategy: file share issues");
                 }
+
                 sCache.put(authority, strat);
             }
         }
