@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Diary</string>
-    <string name="title_home">Calendar</string>
-    <string name="title_dashboard">Diary</string>
-    <string name="title_notifications">Notifications</string>
-
-</resources>
