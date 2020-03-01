@@ -121,7 +121,7 @@ public class Diary extends Activity
     public final static String SHOWN = "shown";
     public final static String ENTRY = "entry";
 
-    // Patterns
+    // Patterns   regex
     public final static Pattern PATTERN_CHARS =
         Pattern.compile("[\\(\\)\\[\\]\\{\\}\\<\\>\"'`]");
     public final static Pattern MEDIA_PATTERN =
@@ -155,7 +155,7 @@ public class Diary extends Activity
     public final static String JS_SCRIPT = "js/script.js";
     public final static String TEXT_JAVASCRIPT = "text/javascript";
     public final static String FILE_PROVIDER =
-        "org.billthefarmer.diary.fileprovider";
+        "org.dharshini.diary.fileprovider";
 
     public final static String MEDIA_TEMPLATE = "![%s](%s)\n";
     public final static String LINK_TEMPLATE = "[%s](%s)\n";
@@ -1528,6 +1528,7 @@ public class Diary extends Activity
         }
 
         startActivity(Intent.createChooser(intent, null));
+
     }
 
     // addTime
