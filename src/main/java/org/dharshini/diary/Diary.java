@@ -13,6 +13,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -1542,14 +1547,52 @@ public class Diary extends Activity
         loadMarkdown();
     }
 
+    public void notificationBuilder(){
+
+        try{
+       Notification notification = new Notification.Builder(this)
+                .setContentTitle("Title").setContentText("Text")
+                .setSmallIcon(R.drawable.ic_launcher).getNotification();
+        }
+        catch (Exception e){
+            Log.d(TAG, "notificationBuilder: " + e);
+        }
+
+    }
+
+    public void addEventCalendar() {
+        Calendar cal = Calendar.getInstance();
+        Intent intent = new Intent(Intent.ACTION_EDIT);
+        intent.setType("vnd.android.cursor.item/event");
+        intent.putExtra("beginTime", cal.getTimeInMillis());
+        intent.putExtra("allDay", true);
+        intent.putExtra("rrule", "FREQ=YEARLY");
+        intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+        intent.putExtra("title", "Dairy Events");
+        startActivity(intent);
+
+}
+
+    public void AddCalendarEvent(View view) {
+        Calendar calendarEvent = Calendar.getInstance();
+        Intent i = new Intent(Intent.ACTION_EDIT);
+        i.setType("vnd.android.cursor.item/event");
+        i.putExtra("beginTime", calendarEvent.getTimeInMillis());
+        i.putExtra("allDay", true);
+        i.putExtra("rule", "FREQ=YEARLY");
+        i.putExtra("endTime", calendarEvent.getTimeInMillis() + 60 * 60 * 1000);
+        i.putExtra("title", "Calendar Event");
+        startActivity(i);
+    }
     // addEvents
     public void addEvents()
     {
+        addEventCalendar();
         GregorianCalendar endTime = new
             GregorianCalendar(currEntry.get(Calendar.YEAR),
                               currEntry.get(Calendar.MONTH),
                               currEntry.get(Calendar.DATE));
-        endTime.add(Calendar.DATE, 1);
+
         QueryHandler.queryEvents(this, currEntry.getTimeInMillis(),
                                  endTime.getTimeInMillis(),
                                  (startTime, title) ->
